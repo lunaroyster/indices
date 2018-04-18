@@ -1,0 +1,8 @@
+*.crx
+*.pem
+
+*.css
+
+temp
+
+node_modules
