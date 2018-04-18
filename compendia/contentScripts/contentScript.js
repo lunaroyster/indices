@@ -17,3 +17,12 @@ let resolveHeadings = (doc)=> {
     });
     return headings;
 }
+let printIndented = (headings)=> {
+    for (let heading of headings) {
+        let line = Array(heading.indent).join('  ') + heading.title;
+        console.log(line);
+    }
+}
+(()=> {
+    printIndented(resolveHeadings(document));
+})()
