@@ -1,0 +1,38 @@
+.compendia {
+    position: fixed;
+    right: 0;
+    z-index: 502; 
+    top: 0;
+    background: white;
+    border-left: #f2f2f2 5px solid;
+    height: 100%;
+    .content {
+        padding: 1em;
+        .heading-tree {
+            .heading {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                cursor: pointer;
+                transition-duration: 0.2s;
+                &:hover {
+                    background-color: #f2f2f2;
+                }
+        		.loopingClass (@index) when (@index <= 6){
+                  &.i-@{index} {
+                      padding-left: ~"@{index}em";
+                  }
+                  .loopingClass(@index + 1);
+        		}
+				.loopingClass(0);
+            }
+        }
+    }
+    .handle {
+        position: absolute;
+        left: -4px;
+        top: 0;
+        bottom: 0;
+        width: 8px;
+        cursor: w-resize;
+    }
+}

@@ -23,6 +23,49 @@ let printIndented = (headings)=> {
         console.log(line);
     }
 }
+let injectViewer = (doc, headings)=> {
+    var isResizing = false,
+        lastDownX = 0;
+    //Standard
+    let root = $(`
+        <div class="compendia">
+            <div class="handle"></div>
+            <div class="controls"></div>
+            <div class="content">
+                <div class="heading-tree"></div>
+            </div>
+        </div>
+    `);
+    root.appendTo('body');
+
+    let handle = $('.handle', root);
+    handle.on('mousedown', function (e) {
+        isResizing = true;
+        lastDownX = e.clientX;
+    });
+    $(document)
+    .on('mousemove', function (e) {
+        if (!isResizing) return;
+        e.stopPropagation();
+        e.preventDefault();
+        root.css('width', document.body.offsetWidth - e.clientX);
+    })
+    .on('mouseup', e=> isResizing = false);
+
+    //Loop headings
+    let headingTree = $('.heading-tree', root);
+    for (let heading of headings) {
+        let headingElement = $(`<div class="heading i-${heading.indent}">${heading.title}</div>`);
+        headingElement.appendTo(headingTree);
+        headingElement.click(()=>{
+            heading.element .scrollIntoView();
+        });
+    }
+}
 (()=> {
-    printIndented(resolveHeadings(document));
+    let hostname = new URL(document.location.href).hostname;
+    if (hostname === 'medium.com'|| hostname === 'medium.freecodecamp.org') {
+        let headings = resolveHeadings(document)
+        injectViewer(document, headings);
+    }
 })()
