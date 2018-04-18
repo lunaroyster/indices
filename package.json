@@ -1,0 +1,10 @@
+{
+  "name": "compendia",
+  "version": "0.1.0",
+  "description": "Creates an index for articles on the web.",
+  "scripts": {
+    "dist": "node index.js"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
