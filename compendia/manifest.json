@@ -1,0 +1,26 @@
+{
+  "name": "compendia",
+  "version": "0.1.0",
+  "description": "Creates an index for articles on the web.",
+  // "icons": { "128": "images/compendia.png" },
+  // "background": { 
+  //   "page": "background/background.html"
+  // },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"], 
+      "js": [
+        "importedScripts/jquery.min.js",
+        "contentScripts/contentScript.js"
+      ],
+      "css": ["contentScripts/contentScript.css"]
+    }
+  ],
+  // "options_page": "optionsPage/index.html",
+  "permissions": [
+    "tabs",
+    "contextMenus"
+  ],
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "manifest_version": 2
+}
