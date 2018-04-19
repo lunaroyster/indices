@@ -1,8 +1,8 @@
 {
-  "name": "compendia",
+  "name": "indices",
   "version": "0.1.0",
   "description": "Creates an index for articles on the web.",
-  // "icons": { "128": "images/compendia.png" },
+  // "icons": { "128": "images/indices.png" },
   // "background": { 
   //   "page": "background/background.html"
   // },

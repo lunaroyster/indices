@@ -38,7 +38,7 @@ let printIndented = (headings)=> {
 
 let createRoot = ()=> {
     let root = $(`
-    <div class="compendia">
+    <div class="indices">
         <div class="handle"></div>
         <div class="controls"></div>
         <div class="content">

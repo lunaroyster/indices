@@ -19,7 +19,7 @@ let walkSync = async(dir, filelist)=> {
 };
 
 (async()=> {
-    let files = await walkSync('./compendia');
+    let files = await walkSync('./indices');
     for (let file of files) {
         let p = path.parse(file);
         if(p.ext != ".less") continue;
@@ -32,7 +32,7 @@ let walkSync = async(dir, filelist)=> {
     let imports = [
         './node_modules/jquery/dist/jquery.min.js'
     ];
-    let destination = "./compendia/importedScripts";
+    let destination = "./indices/importedScripts";
     for(let i of imports) {
         await fse.copy(i, `${destination}/${path.parse(i).base}`, {overwrite: true});
     }
