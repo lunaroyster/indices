@@ -64,7 +64,9 @@ let injectViewer = (doc, headings)=> {
 }
 (()=> {
     let hostname = new URL(document.location.href).hostname;
-    if (hostname === 'medium.com'|| hostname === 'medium.freecodecamp.org') {
+    let mediumDomains = ['medium.com','hackernoon.com', 'medium.freecodecamp.org', 'codeburst.io'];
+    //TODO: Detect Medium dynamically, instead of relying on hosts using medium.
+    if (mediumDomains.indexOf(hostname)!=-1) {
         let headings = resolveHeadings(document)
         injectViewer(document, headings);
     }
