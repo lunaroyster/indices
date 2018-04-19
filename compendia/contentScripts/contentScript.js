@@ -55,6 +55,7 @@ let injectViewer = (doc, headings)=> {
     }
     let populateHeadings = (headings, root)=> {
         let headingTree = $('.heading-tree', root);
+        headingTree.empty();
         for (let heading of headings) {
             let headingElement = $(`<div class="heading i-${heading.indent}">${heading.title}</div>`);
             headingElement.appendTo(headingTree);
