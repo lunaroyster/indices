@@ -6,8 +6,14 @@
     background: white;
     border-left: #f2f2f2 5px solid;
     height: 100%;
+    width: 15%;
     .content {
         padding: 1em;
+        height: 100%;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+            display: none;
+        }
         .heading-tree {
             .heading {
                 padding-top: 10px;
@@ -29,10 +35,10 @@
     }
     .handle {
         position: absolute;
-        left: -4px;
+        left: -6px;
         top: 0;
         bottom: 0;
-        width: 8px;
+        width: 12px;
         cursor: w-resize;
     }
 }
