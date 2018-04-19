@@ -67,6 +67,16 @@ let injectViewer = (doc, headings)=> {
     activateDragHandle(doc, root);
     populateHeadings(headings, root);    
 }
+let onUrlChange = (callback)=> {
+    let initHref = document.location.href;
+    setInterval(()=> {
+        let currentHref = document.location.href;
+        if(currentHref!=initHref) {
+            callback();
+            initHref = currentHref;
+        }
+    }, 2000)
+};
 (()=> {
     let hostname = new URL(document.location.href).hostname;
     let mediumDomains = ['medium.com','hackernoon.com', 'medium.freecodecamp.org', 'codeburst.io'];
