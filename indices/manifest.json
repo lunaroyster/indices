@@ -2,7 +2,7 @@
   "name": "indices",
   "version": "0.1.0",
   "description": "Creates an index for articles on the web.",
-  // "icons": { "128": "images/indices.png" },
+  "icons": { "128": "images/indices.png" },
   // "background": { 
   //   "page": "background/background.html"
   // },
@@ -16,9 +16,7 @@
       "css": ["contentScripts/contentScript.css"]
     }
   ],
-  // "options_page": "optionsPage/index.html",
   "permissions": [
-    "tabs",
     "contextMenus"
   ],
   "content_security_policy": "script-src 'self'; object-src 'self'",
