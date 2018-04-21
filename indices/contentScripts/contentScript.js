@@ -95,4 +95,5 @@ let injectViewer = (doc)=> {
             populateHeadings(document, root);
         });
     })
+    chrome.runtime.sendMessage({message: 'ping'});
 })()
