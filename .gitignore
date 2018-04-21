@@ -3,6 +3,8 @@
 
 *.css
 
+*.zip
+
 temp
 
 node_modules
