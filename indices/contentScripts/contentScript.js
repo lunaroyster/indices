@@ -40,6 +40,7 @@ let createRoot = ()=> {
     let root = $(`
     <div class="indices">
         <div class="handle"></div>
+        <div class="refreshButton">REFRESH</div>
         <div class="controls"></div>
         <div class="content">
             <div class="heading-tree"></div>
@@ -64,6 +65,10 @@ let activateDragHandle = (doc, root)=> {
         root.css('width', doc.body.offsetWidth - e.clientX);
     })
     .on('mouseup', e=> isResizing = false);
+    $('.refreshButton', root).on('click', e=> {
+        console.log(doc, root)
+        populateHeadings(doc, root);
+    });
 }
 let populateHeadings = (doc, root)=> {
     let headings = resolveHeadings(doc);
@@ -81,7 +86,7 @@ let populateHeadings = (doc, root)=> {
 let injectViewer = (doc)=> {
     root = createRoot();
     activateDragHandle(doc, root);
-    populateHeadings(doc, root);    
+    populateHeadings(doc, root);
     chrome.runtime.sendMessage({message: 'event', eventCategory: 'Viewer', eventAction: 'Injection'});
 }
 
