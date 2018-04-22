@@ -1,2 +1,5 @@
 0.1.0
     - indices
+0.1.1
+    - Promo Graphics
+    - GA
