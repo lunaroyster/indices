@@ -1,6 +1,6 @@
 {
   "name": "indices",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Creates an index for articles on the web.",
   "icons": { "128": "images/indices.png" },
   "background": { 
