@@ -76,11 +76,13 @@ let populateHeadings = (doc, root)=> {
             heading.element.scrollIntoView();
         });
     }
+    chrome.runtime.sendMessage({message: 'event', eventCategory: 'Viewer', eventAction: 'Population', eventValue: headings.length});
 }
 let injectViewer = (doc)=> {
     root = createRoot();
     activateDragHandle(doc, root);
     populateHeadings(doc, root);    
+    chrome.runtime.sendMessage({message: 'event', eventCategory: 'Viewer', eventAction: 'Injection'});
 }
 
 

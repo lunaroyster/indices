@@ -6,4 +6,10 @@ let init = function() {
     window.ga('send', 'pageview', 'background');
 }
 
+chrome.runtime.onMessage.addListener(function(req, sender, sendResponse) {
+    if (req.message === 'event') {
+        window.ga('send', 'event', req.eventCategory, req.eventAction, req.eventLabel, req.eventValue);
+    }
+});
+
 init();
