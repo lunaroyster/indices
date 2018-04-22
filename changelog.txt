@@ -3,3 +3,8 @@
 0.1.1
     - Promo Graphics
     - GA
+
+0.2.0
+    - Refresh Button
+    - Heading resolver fix
+    - Style fix
