@@ -17,9 +17,9 @@ let getIndentFromElement = (element)=> {
 }
 let resolveHeadings = (doc)=> {
     let headings = [];
-    doc
-    .querySelector('article>.postArticle-content>section.section')
-    .querySelectorAll('h1,h2,h3,h4,h5,h6')
+    let content = doc.querySelector('article>.postArticle-content>section.section');
+    if(!content) return [];
+    content.querySelectorAll('h1,h2,h3,h4,h5,h6')
     .forEach(c=> {
         headings.push({
             indent: getIndentFromElement(c),
