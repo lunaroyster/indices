@@ -75,7 +75,7 @@ let populateHeadings = (doc, root)=> {
     let headingTree = $('.heading-tree', root);
     headingTree.empty();
     for (let heading of headings) {
-        let headingElement = $(`<div class="heading i-${heading.indent}">${heading.title}</div>`);
+        let headingElement = $(`<div class="heading"><div class="text i-${heading.indent}">${heading.title}</div></div>`);
         headingElement.appendTo(headingTree);
         headingElement.click(()=>{
             heading.element.scrollIntoView();

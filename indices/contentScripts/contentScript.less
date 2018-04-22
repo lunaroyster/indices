@@ -8,7 +8,6 @@
     height: 100%;
     width: 15%;
     .content {
-        padding: 1em;
         height: 100%;
         overflow-y: scroll;
         &::-webkit-scrollbar {
@@ -18,18 +17,20 @@
             .heading {
                 padding-top: 10px;
                 padding-bottom: 10px;
-                cursor: pointer;
                 transition-duration: 0.2s;
-                &:hover {
-                    background-color: #f2f2f2;
+                .buttonish;
+                .text {
+                    &.i-0 {
+                        margin-left: 0.5em;
+                    }
+                    .loopingClass (@index) when (@index <= 6){
+                      &.i-@{index} {
+                          padding-left: ~"@{index}em";
+                      }
+                      .loopingClass(@index + 1);
+                    }
+                    .loopingClass(0);
                 }
-        		.loopingClass (@index) when (@index <= 6){
-                  &.i-@{index} {
-                      padding-left: ~"@{index}em";
-                  }
-                  .loopingClass(@index + 1);
-        		}
-				.loopingClass(0);
             }
         }
     }
@@ -40,5 +41,19 @@
         bottom: 0;
         width: 12px;
         cursor: w-resize;
+    }
+    .refreshButton {
+        color: darkgray;
+        font-size: smaller;
+        text-align: center;
+        padding: 0.5em;
+        .buttonish;
+    }
+    .buttonish() {
+        cursor: pointer;
+        transition-duration: 0.2s;
+        &:hover {
+            background-color: #f2f2f2;
+        }
     }
 }
