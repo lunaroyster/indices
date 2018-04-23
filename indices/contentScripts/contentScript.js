@@ -15,9 +15,14 @@ let onUrlChange = (callback)=> {
 let getIndentFromElement = (element)=> {
     return element.nodeName[1]-1;
 }
+
+let getContentElement = (doc)=> {
+    return doc.querySelector('article>.postArticle-content>section.section');
+}
+
 let resolveHeadings = (doc)=> {
     let headings = [];
-    let content = doc.querySelector('article>.postArticle-content>section.section');
+    let content = getContentElement(doc);
     if(!content) return [];
     content.querySelectorAll('h1,h2,h3,h4,h5,h6')
     .forEach(c=> {
@@ -92,12 +97,25 @@ let injectViewer = (doc)=> {
     chrome.runtime.sendMessage({message: 'event', eventCategory: 'Viewer', eventAction: 'Injection'});
 }
 
+let isMedium = (doc)=> {
+    try {
+        let metaContent = [
+            doc.querySelector("meta[property='al:ios:app_name']").content,
+            doc.querySelector("meta[property='al:android:app_name']").content,
+            doc.querySelector("meta[name='twitter:app:name:iphone']").content,
+        ];
+        for (let m of metaContent) {
+            if(m!='Medium') return false;
+        }
+        return true;
+    }
+    catch (e) {
+        return false;
+    }
+}
 
 (()=> {
-    // //TODO: Detect Medium dynamically, instead of relying on hosts using medium.
-    let hostname = new URL(document.location.href).hostname;
-    let mediumDomains = ['medium.com','hackernoon.com', 'medium.freecodecamp.org', 'codeburst.io'];
-    if(mediumDomains.indexOf(hostname) === -1) return;
+    if(!isMedium(document)) return;
     injectViewer(document);
     onUrlChange(()=>{
         $(document).ready(()=> {
