@@ -39,7 +39,9 @@ let printIndented = (headings)=> {
 let createRoot = ()=> {
     let root = $(`
     <div class="indices">
-        <div class="handle"></div>
+        <div class="handle">
+            <div class="dragger">...</div>
+        </div>
         <div class="refreshButton">REFRESH</div>
         <div class="controls"></div>
         <div class="content">

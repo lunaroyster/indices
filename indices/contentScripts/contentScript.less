@@ -41,6 +41,18 @@
         bottom: 0;
         width: 12px;
         cursor: w-resize;
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        .dragger {
+            opacity: 0;
+            color: grey;
+            width: 24px;
+            writing-mode: vertical-lr;
+        }
+    }
+    &:hover .handle .dragger {
+        opacity: 1;
     }
     .refreshButton {
         color: darkgray;
