@@ -1,5 +1,6 @@
 0.1.0
     - indices
+
 0.1.1
     - Promo Graphics
     - GA
@@ -8,3 +9,8 @@
     - Refresh Button
     - Heading resolver fix
     - Style fix
+
+0.3.0
+    - Indices now works on all blogs that use Medium
+    - Added dragger on handle
+    - Removed selection ability (interfered with page selection)
