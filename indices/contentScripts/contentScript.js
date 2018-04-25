@@ -39,6 +39,7 @@ let printIndented = (headings)=> {
         let line = Array(heading.indent).join('  ') + heading.title;
         console.log(line);
     }
+    chrome.runtime.sendMessage({message: 'event', eventCategory: 'Console', eventAction: 'PrintIndented', eventLabel: headings.length});
 }
 
 let createRoot = ()=> {
@@ -71,10 +72,17 @@ let activateDragHandle = (doc, root)=> {
         e.preventDefault();
         root.css('width', doc.body.offsetWidth - e.clientX);
     })
-    .on('mouseup', e=> isResizing = false);
+    .on('mouseup', e=> {
+        if(isResizing) {
+            isResizing = false;
+            let width = parseInt(root.css('width').replace('px', ''));
+            chrome.runtime.sendMessage({message: 'event', eventCategory: 'Viewer', eventAction: 'Resize', eventValue: width});
+        }
+    });
     $('.refreshButton', root).on('click', e=> {
         console.log(doc, root)
         populateHeadings(doc, root);
+        chrome.runtime.sendMessage({message: 'event', eventCategory: 'Viewer', eventAction: 'Refresh'});
     });
 }
 let populateHeadings = (doc, root)=> {
@@ -86,15 +94,16 @@ let populateHeadings = (doc, root)=> {
         headingElement.appendTo(headingTree);
         headingElement.click(()=>{
             heading.element.scrollIntoView();
+            chrome.runtime.sendMessage({message: 'event', eventCategory: 'Viewer', eventAction: 'HeadingClick', eventValue: headings.indexOf(heading)});
         });
     }
-    chrome.runtime.sendMessage({message: 'event', eventCategory: 'Viewer', eventAction: 'Population', eventValue: headings.length});
+    chrome.runtime.sendMessage({message: 'event', eventCategory: 'Viewer', eventAction: 'Population', eventLabel: headings.length, nonInteraction: true});
 }
 let injectViewer = (doc)=> {
     root = createRoot();
     activateDragHandle(doc, root);
+    chrome.runtime.sendMessage({message: 'event', eventCategory: 'Viewer', eventAction: 'Injection', nonInteraction: true});
     populateHeadings(doc, root);
-    chrome.runtime.sendMessage({message: 'event', eventCategory: 'Viewer', eventAction: 'Injection'});
 }
 
 let isMedium = (doc)=> {
