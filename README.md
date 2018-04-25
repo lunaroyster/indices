@@ -1,10 +1,10 @@
-# Indices ([chrome extension](https://chrome.google.com/webstore/detail/indices/ilicifhajkigmalgipoidbmgbjgmoeck))
-Creates an index for articles on the web.
+# Indices 
 
-Indices creates a Table of Contents sidebar for Medium articles, and enables you to skip around.
+[Chrome extension](https://chrome.google.com/webstore/detail/indices/ilicifhajkigmalgipoidbmgbjgmoeck)  
+[Product Hunt post](https://producthunt.com/posts/indices)
+
+Indices is an extension for Chrome that makes a table of contents on Medium articles using the headings in it. You can click on the sections in the sidebar to skip around the article with ease.
+
+![A preview of Indices](https://i.imgur.com/XHSMVUT.png)
 
 It's for you if you're an avid Medium reader.
-
-Contribute, if that's your thing: https://github.com/lunaroyster/indices
-
-Privacy Policy: https://bit.ly/2JgC9Y2
